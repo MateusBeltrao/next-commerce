@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Product from "./components/Product";
 
 import { ProductType } from "@/types/ProductTypes";
 
@@ -16,7 +17,6 @@ async function getProducts() {
 export default async function Home() {
 
   const products = await getProducts()
-  console.log(products)
 
 
   return (
@@ -24,7 +24,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-10 xl:gap-6">
         
           {products.map((products: ProductType) => (
-            <div key={products.id}>{products.title}</div>
+            <Product key={products.id} product={products}></Product>
           ))}
        
 
